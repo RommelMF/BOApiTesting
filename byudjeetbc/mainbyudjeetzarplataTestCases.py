@@ -29,7 +29,7 @@ class MainbyudjeetzarplataTestCases(unittest.TestCase):
         self.data_response = response
 
     def test_mainbyudjeetzarplata_statuscode(self):
-        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200')
+        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200 ')
 
     def test_mainbyudjeetzarplata_data(self):
         self.assertTrue("mainbyudjeetzarplata" in self.data_json, 'нет данных по зарплате сотрудников БЦ')

@@ -30,7 +30,7 @@ class Vacancy_erbcTestCases(unittest.TestCase):
         self.data_response = response
 
     def test_vacancy_erbc_statuscode(self):
-        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200')
+        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200 ')
 
     def test_vacancy_erbc_data(self):
         self.assertTrue("vacancy_erbc" in self.data_json, 'отсутствуют вакансии в ЭРБЦ')

@@ -30,7 +30,7 @@ class MainbyudjeetTestCases(unittest.TestCase):
         self.data_response = response
 
     def test_mainbyudjeet_statuscode(self):
-        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200')
+        self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200 ')
 
     def test_mainbyudjeet_data(self):
         self.assertTrue("mainbyudjeet" in self.data_json, 'нет данных по статьям расходов бюджета БЦ')
