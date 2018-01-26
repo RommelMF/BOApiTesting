@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
 import unittest
 import requests
+import json
 
 class MainbyudjeetzarplataTestCases(unittest.TestCase):
 
     def setUp(self):
+        # получение id бюджета из файла
+        with open('test_data.json', 'r') as f:
+            data = dict(json.load(f))
+            byudjeet_id = data["Id"]
         url = "https://bo.bars.group/bars_office/mainbyudjeetzarplata/read_rows/"
 
         querystring = {"_dc":"1516478680739"}
 
-        payload = "{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"6921BDC6945EAE43AA3266F25B3F9E75\",\"extraParams\":{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"6921BDC6945EAE43AA3266F25B3F9E75\"},\"filters\":[],\"additionalParams\":{}}"
+        payload = "{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"" + byudjeet_id + "\",\"extraParams\":{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"" + byudjeet_id + "\"},\"filters\":[],\"additionalParams\":{}}"
         headers = {
             'origin': "https://bo.bars.group",
             'x-requested-with': "XMLHttpRequest",

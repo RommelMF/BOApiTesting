@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 import requests
 import unittest
+import json
 
 
 class MainbyudjeetTestCases(unittest.TestCase):
 
     def setUp(self):
-        url = "https://bo.bars.group/bars_office/mainbyudjeet/read_rows/"
+        # получение id бюджета из файла
+        with open('test_data.json', 'r') as f:
+            data = dict(json.load(f))
+            byudjeet_id = data["Id"]
+        url = "https://test-bo.bars.group/bars_office/mainbyudjeet/read_rows/"
 
-        querystring = {"_dc": "1516478680734"}
-
-        payload = "{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"6921BDC6945EAE43AA3266F25B3F9E75\",\"extraParams\":{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\"6921BDC6945EAE43AA3266F25B3F9E75\"},\"filters\":[],\"additionalParams\":{}}"
+        querystring = {"_dc": "1516699633543"}
+        payload = "{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\""+ byudjeet_id +"\",\"extraParams\":{\"subfilterfie\":\"byudjeetbc\",\"subfiltervalue\":\""+ byudjeet_id +"\"},\"filters\":[],\"additionalParams\":{}}"
         headers = {
             'origin': "https://bo.bars.group",
             'x-requested-with': "XMLHttpRequest",
@@ -20,7 +24,7 @@ class MainbyudjeetTestCases(unittest.TestCase):
             'referer': "https://bo.bars.group/",
             'accept-encoding': "gzip, deflate, br",
             'accept-language': "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-            'cookie': "",
+            'cookie': "" ,
             'cache-control': "no-cache"
         }
 
@@ -28,6 +32,7 @@ class MainbyudjeetTestCases(unittest.TestCase):
 
         self.data_json = dict(response.json())
         self.data_response = response
+        print self.data_json
 
     def test_mainbyudjeet_statuscode(self):
         self.assertEquals(self.data_response.status_code, 200, 'код ответа не 200 ')
