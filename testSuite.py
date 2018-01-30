@@ -6,7 +6,7 @@ from auth import authBO
 
 testSuite = unittest.TestSuite()
 # authorization tests
-testSuite.addTest(unittest.makeSuite(authBO.AuthTest))
+# testSuite.addTest(unittest.makeSuite(authBO.AuthTest))
 testSuite.addTests(unittest.makeSuite(byudjeetbcTestCases.ByudjeetbcTestCases))
 # testSuite.addTest(unittest.makeSuite(mainbyudjeetTestCases.MainbyudjeetTestCases))
 # testSuite.addTest(unittest.makeSuite(mainbyudjeetzarplataTestCases.MainbyudjeetzarplataTestCases))
@@ -26,6 +26,3 @@ print("skipped")
 print(len(testResult.skipped))
 print("testsRun")
 print(testResult.testsRun)
-
-
-
